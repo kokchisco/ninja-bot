@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body { background: #1A1C22; color: white; font-family: Arial; padding: 20px; }
+        h3 { margin-top: 20px; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        form { display: inline; }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <h3>Users</h3>
+    <ul>
+        {% for user in users %}
+        <li>ID: {{ user[0] }}, Balance: ${{ user[1] }}, VIP: {{ user[3] }}
+            <form method="post">
+                <input type="hidden" name="action" value="set_vip">
+                <input type="hidden" name="target_id" value="{{ user[0] }}">
+                <button type="submit">Set VIP</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>Trades</h3>
+    <ul>
+        {% for trade in trades %}
+        <li>User {{ trade[0] }}: ${{ trade[1] }} {{ trade[2] }}, Profit: ${{ trade[3] }}, {{ trade[4] }} at {{ trade[5] }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Withdrawals</h3>
+    <ul>
+        {% for w in withdrawals %}
+        <li>User {{ w[0] }}: ${{ w[1] }}, Wallet: {{ w[2] }} ({{ w[3] }}), Status: {{ w[4] }}
+            <form method="post">
+                <input type="hidden" name="action" value="approve_withdrawal">
+                <input type="hidden" name="id" value="{{ w[0] }}">
+                <select name="method">
+                    <option value="manual">Manual</option>
+                    <option value="oxapay">OxaPay</option>
+                </select>
+                <button type="submit">Approve</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>Deposits</h3>
+    <ul>
+        {% for d in deposits %}
+        <li>User {{ d[0] }}: ${{ d[1] }} at {{ d[2] }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Add Promo Code</h3>
+    <form method="post">
+        <input type="hidden" name="action" value="add_promo">
+        <label>Code: <input type="text" name="code"></label>
+        <label>Amount: <input type="number" name="amount"></label>
+        <label>Total Limit: <input type="number" name="total_limit"></label>
+        <label>User Limit: <input type="number" name="user_limit"></label>
+        <button type="submit">Add Promo</button>
+    </form>
+</body>
+</html>

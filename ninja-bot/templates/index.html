@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ninja Bot</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ninja Bot</h1>
+        <div>User ID: {{ user_id }}</div>
+        <div>Balance: ${{ balance }}</div>
+        <div>Demo Balance: ${{ demo_balance }}</div>
+        <button onclick="switchAccount('demo')">Demo</button>
+        <button onclick="switchAccount('real')">Real</button>
+    </header>
+    <div class="assets">
+        <h2>BTC-USD: $58,123.12</h2>
+        <canvas id="priceChart"></canvas>
+    </div>
+    <div class="trade-options">
+        <label>Amount: $<input type="number" id="amount" value="100"></label>
+        <button onclick="trade('buy')">Buy</button>
+        <button onclick="trade('sell')">Sell</button>
+        <button onclick="withdraw()" id="withdrawBtn">Withdraw</button>
+        <button onclick="resetDemo()" id="resetBtn" style="display: none;">Reset Demo</button>
+    </div>
+    <div class="history">
+        <h3>Trade Results</h3>
+        <div id="tradeResults"></div>
+    </div>
+    <div class="wallet">
+        <h3>Wallet</h3>
+        <div>Current Wallet: {{ wallet }} ({{ wallet_type }})</div>
+        <label>Wallet Address: <input type="text" id="wallet"></label>
+        <select id="walletType">
+            <option value="TRX">TRX</option>
+            <option value="USDT-TRC20">USDT-TRC20</option>
+            <option value="USDT-BEP20">USDT-BEP20</option>
+        </select>
+        <button onclick="setWallet()">Set Wallet</button>
+    </div>
+    <div class="activity">
+        <h3>Activity</h3>
+        <button onclick="changePassword()">Change Password</button>
+        <button onclick="transfer()">Transfer</button>
+        <button onclick="checkIn()">Daily Check-in ($1)</button>
+        <input type="text" id="promo" placeholder="Promo Code">
+        <button onclick="applyPromo()">Apply</button>
+    </div>
+    <footer>
+        <a href="#" onclick="showHome()">Home</a>
+        <a href="#" onclick="showTrade()">Trade</a>
+        <a href="#" onclick="showActivity()">Activity</a>
+    </footer>
+    <script src="/static/script.js"></script>
+</body>
+</html>

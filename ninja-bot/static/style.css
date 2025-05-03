@@ -1,0 +1,71 @@
+body {
+    background: #1A1C22;
+    color: white;
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #2A2C34;
+}
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.assets {
+    padding: 10px;
+}
+.assets h2 {
+    margin: 0;
+}
+.trade-options {
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+.trade-options button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.trade-options button:nth-child(2) {
+    background: teal;
+    color: white;
+}
+.trade-options button:nth-child(3) {
+    background: red;
+    color: white;
+}
+.trade-options button:nth-child(4) {
+    background: yellow;
+    color: black;
+}
+.history, .wallet, .activity {
+    padding: 10px;
+}
+.activity button {
+    padding: 5px 10px;
+    margin: 5px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #2A2C34;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
